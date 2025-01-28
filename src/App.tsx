@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Card, Input } from "@material-tailwind/react";
+import { BadgeInfo } from "lucide-react";
 
 function App() {
   const [currVal, setCurrVal] = useState<number>(0);
@@ -17,18 +18,22 @@ function App() {
   };
 
   function calcSingleGain(value: number) {
-    const percentage: number = value * 0.01 * 2;
+    const percentage: number = value * 0.008 * 2;
     return value + percentage;
   }
 
   return (
-    <div className="flex justify-center items-center h-screen bg-blue-50">
+    <div className="flex flex-col justify-center items-center h-screen bg-blue-50">
       <Card
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
-        className="p-2"
+        className="p-2 space-y-2"
       >
+        <div className="flex space-x-2 text-xs items-center justify-center">
+          <BadgeInfo size={16} strokeWidth={1.5} />
+          <p>Adjusted to use 0.8% as seen in recent trades.</p>
+        </div>
         <form className=" flex flex-col space-y-3 ">
           <Input
             size="md"

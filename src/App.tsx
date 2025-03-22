@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Card, Input } from "@material-tailwind/react";
 import { BadgeInfo } from "lucide-react";
+import moment from "moment";
 
 function App() {
   const [currVal, setCurrVal] = useState<number>(0);
@@ -14,7 +15,13 @@ function App() {
       amount = calcSingleGain(amount);
       i++;
     }
-    alert(`You would have an estimated $${amount.toFixed(2)} in ${days} days`);
+    alert(
+      `You would have an estimated USDT${amount.toLocaleString()} in ${days} days which falls on ${moment()
+        .add(days, "days")
+        .format("Do MMMM, YYYY")} \nToday's Date: ${moment().format(
+        "Do MMMM, YYYY"
+      )}`
+    );
   };
 
   function calcSingleGain(value: number) {
